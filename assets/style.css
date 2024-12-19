@@ -1,0 +1,387 @@
+/* Reset and Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f5f7fa;
+    color: #2C3E50;
+    line-height: 1.6;
+}
+
+/* Main Container Styles */
+.dashboard-container {
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+    max-width: 1920px;
+    margin: 40px auto;
+    padding: 0 40px;
+}
+
+/* Header Styles */
+.header-section {
+    background: linear-gradient(135deg, #2193b0, #6dd5ed);
+    padding: 40px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.header-section h1 {
+    color: white !important;
+    font-size: 2.8em;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.header-section p {
+    color: #e0e0e0 !important;
+    font-size: 1.3em;
+    font-weight: 300;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Main Content Layout */
+.main-content {
+    display: grid;
+    grid-template-columns: minmax(380px, 400px) 1fr;
+    gap: 40px;
+    min-height: 800px;
+    position: relative;
+}
+/* Upload Section */
+.upload-section {
+    padding: 25px;
+    margin-bottom: 30px;
+    border: 1px solid #e0e0e0;
+    border-radius: 15px;
+    background: #fafafa;
+    line-height: 1.5; /* Ensures enough spacing between lines */
+    display: flex; /* Ensures proper layout alignment */
+    flex-direction: column; /* Stacks items vertically */
+    gap: 15px; /* Adds spacing between elements */
+}
+
+.upload-section label {
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #2C3E50;
+}
+
+.upload-section .dcc-upload {
+    margin-top: 10px; /* Adds spacing around the upload component */
+    text-align: center;
+    border-radius: 10px;
+    line-height: 2; /* Improves vertical alignment of text inside the box */
+    padding: 10px;
+}
+
+.upload-section .dcc-upload:hover {
+    border-color: #2193b0; /* Highlight border on hover */
+    background: #f1f9ff; /* Subtle background change on hover */
+}
+
+.upload-section .dcc-upload div {
+    font-size: 1em; /* Ensures readable font size */
+    color: #2C3E50;
+}
+
+/* Left Panel Styles */
+.left-panel {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+}
+
+/* Section Spacing */
+.upload-section, 
+.visualization-controls, 
+.advanced-features {
+    padding: 25px;
+    margin-bottom: 30px;
+    border: 1px solid #e0e0e0;
+    border-radius: 15px;
+    background: #fafafa;
+}
+
+.upload-section:last-child, 
+.visualization-controls:last-child, 
+.advanced-features:last-child {
+    margin-bottom: 0;
+}
+
+/* Section Headers */
+h3 {
+    font-size: 1.4em;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+/* Form Element Styles */
+.dropdown {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #2C3E50;
+}
+
+.Select-control {
+    border-radius: 10px !important;
+    border: 2px solid #e0e0e0 !important;
+    transition: border-color 0.3s ease;
+    min-height: 40px !important;
+}
+
+.Select-control:hover {
+    border-color: #2193b0 !important;
+}
+
+.input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 20px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+.input:focus {
+    border-color: #2193b0;
+    outline: none;
+}
+
+/* Button Styles */
+.button {
+    background: #2193b0;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 500;
+    margin: 10px 0;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    background: #6dd5ed;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.button:active {
+    transform: translateY(0);
+}
+
+/* Right Panel Styles */
+.right-panel {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Graph Output Styles */
+.graph-output {
+    min-height: 600px;
+    margin-bottom: 40px;
+    border: 2px solid #e0e0e0;
+    border-radius: 15px;
+    padding: 20px;
+    background: white;
+}
+
+/* Data Preview Styles */
+.data-preview {
+    margin-top: 30px;
+    padding: 20px;
+    background: #fafafa;
+    border-radius: 15px;
+    border: 2px solid #e0e0e0;
+}
+
+/* Table Styles */
+.dash-table-container {
+    margin-top: 20px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.dash-table-container .dash-spreadsheet-container {
+    font-family: 'Segoe UI', 'Roboto', sans-serif !important;
+}
+
+.dash-spreadsheet-container .dash-spreadsheet-inner td,
+.dash-spreadsheet-container .dash-spreadsheet-inner th {
+    padding: 12px 15px !important;
+    font-size: 0.95em;
+}
+
+.dash-spreadsheet-container .dash-spreadsheet-inner th {
+    background-color: #f8f9fa !important;
+    font-weight: 600;
+}
+
+/* Statistics Output Styles */
+.stats-output {
+    margin-top: 30px;
+    padding: 25px;
+    background: #fafafa;
+    border-radius: 15px;
+    border: 2px solid #e0e0e0;
+}
+
+.stats-output table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 15px;
+}
+
+.stats-output th,
+.stats-output td {
+    padding: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: left;
+}
+
+.stats-output th {
+    font-weight: 600;
+    background-color: #f8f9fa;
+}
+
+/* Export Options Styles */
+.export-options {
+    margin-top: 30px;
+    padding: 25px;
+    background: #fafafa;
+    border-radius: 15px;
+    border: 2px solid #e0e0e0;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2193b0;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #6dd5ed;
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+    .dashboard-container {
+        padding: 20px;
+        margin: 20px auto;
+    }
+
+    .main-content {
+        gap: 30px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+
+    .left-panel {
+        position: relative;
+        top: 0;
+        max-height: none;
+        margin-bottom: 30px;
+    }
+
+    .header-section {
+        padding: 30px;
+    }
+
+    .header-section h1 {
+        font-size: 2.2em;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        padding: 15px;
+        margin: 15px auto;
+    }
+
+    .header-section {
+        padding: 25px;
+    }
+
+    .header-section h1 {
+        font-size: 1.8em;
+    }
+
+    .header-section p {
+        font-size: 1.1em;
+    }
+
+    .left-panel,
+    .right-panel {
+        padding: 20px;
+    }
+
+    .button {
+        padding: 10px 20px;
+    }
+}
+
+/* Interactive States */
+.dropdown:hover .Select-control,
+.input:hover {
+    border-color: #6dd5ed;
+}
+
+.dash-table-container .dash-spreadsheet-inner td:hover {
+    background-color: #f8f9fa;
+}
+
+/* Loading States */
+.loading {
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+/* Animation for New Content */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.data-preview,
+.stats-output,
+.graph-output {
+    animation: fadeIn 0.5s ease-out;
+}
