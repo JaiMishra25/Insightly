@@ -69,176 +69,193 @@ app.layout = html.Div([
                style={"textAlign": "center", "color": "#7F8C8D"})
     ], className="header-section"),
 
-    # Main Content Container
+# Main Content Container
+html.Div([
+    # Left Panel - Controls
     html.Div([
-        # Left Panel - Controls
+        # File Upload Section
         html.Div([
-            # File Upload Section
-            html.Div([
-                html.H3("📁 Data Upload", style={"color": "#2C3E50"}),
-                dcc.Upload(
-                    id="upload-data",
-                    children=html.Div([
-                        '📎 Drag and Drop or ',
-                        html.A('Select a File (CSV, Excel, JSON)')
-                    ]),
-                    style={
-                        'width': '100%',
-                        'height': '60px',
-                        'lineHeight': '60px',
-                        'borderWidth': '1px',
-                        'borderStyle': 'dashed',
-                        'borderRadius': '5px',
-                        'textAlign': 'center',
-                        'margin': '10px 0'
-                    },
-                    multiple=False
-                ),
-                # Upload Status Display
-                html.Div(id='upload-status', style={'margin': '10px 0', 'color': '#2C3E50'}),
-                # Preview of Uploaded Data
-                html.Div(id='data-preview-container', style={'margin': '20px 0'})
-            ], className="upload-section"),
-            # Visualization Controls
-            html.Div([
-                html.H3("🎨 Visualization Settings", style={"color": "#2C3E50"}),
-                
-                # Graph Type Selection
-                html.Label("📊 Chart Type:"),
-                dcc.Dropdown(
-                    id="graph-type",
-                    options=[
-                        {"label": "Bar Chart", "value": "bar"},
-                        {"label": "Line Chart", "value": "line"},
-                        {"label": "Scatter Plot", "value": "scatter"},
-                        {"label": "Histogram", "value": "histogram"},
-                        {"label": "Box Plot", "value": "box"},
-                        {"label": "Heatmap", "value": "heatmap"},
-                        {"label": "Pie Chart", "value": "pie"},
-                        {"label": "3D Scatter", "value": "scatter_3d"},
-                        {"label": "Bubble Chart", "value": "bubble"},
-                        {"label": "Area Chart", "value": "area"}
-                    ],
-                    value="bar",
-                    className="dropdown"
-                ),
-
-                # Axis Selection
-                html.Label("📏 X-axis:"),
-                dcc.Dropdown(id="x-axis-column", className="dropdown"),
-                
-                html.Label("📏 Y-axis:"),
-                dcc.Dropdown(id="y-axis-column", className="dropdown"),
-                
-                # Color Scheme Selection
-                html.Label("🎨 Color Scheme:"),
-                dcc.Dropdown(
-                    id="color-scheme",
-                    options=[{"label": k, "value": k} for k in COLOR_SCHEMES.keys()],
-                    value="Viridis",
-                    className="dropdown"
-                ),
-
-                # Animation Toggle
-                html.Label("✨ Animation:"),
-                dcc.Checklist(
-                    id='animation-toggle',
-                    options=[{'label': 'Enable Animation', 'value': 'animate'}],
-                    value=[],
-                    className="checklist"
-                ),
-            ], className="visualization-controls"),
-
-            # Advanced Features
-            html.Div([
-                html.H3("🔧 Advanced Features", style={"color": "#2C3E50"}),
-                
-                # Data Filtering
-                html.Label("🔍 Filter Data:"),
-                dcc.Dropdown(id="filter-column", placeholder="Select Column", className="dropdown"),
-                dcc.Input(id="filter-value", type="text", placeholder="Filter Value", className="input"),
-                html.Button("Apply Filter", id="apply-filter", className="button"),
-                html.Button("Reset Filters", id="reset-filter", className="button"),
-
-                # Statistical Analysis
-                html.Label("📈 Statistical Analysis:"),
-                dcc.Checklist(
-                    id='stats-toggle',
-                    options=[
-                        {'label': 'Show Trend Line', 'value': 'trend'},
-                        {'label': 'Show Summary Stats', 'value': 'stats'}
-                    ],
-                    value=[],
-                    className="checklist"
-                ),
-            ], className="advanced-features"),
-
-        ], className="left-panel"),
-
-        # Right Panel - Visualization
+            html.H3("📁 Data Upload", style={"color": "#2C3E50"}),
+            dcc.Upload(
+                id="upload-data",
+                children=html.Div([
+                    '📎 Drag and Drop or ',
+                    html.A('Select a File (CSV, Excel, JSON)')
+                ]),
+                style={
+                    'width': '100%',
+                    'height': '60px',
+                    'lineHeight': '60px',
+                    'borderWidth': '1px',
+                    'borderStyle': 'dashed',
+                    'borderRadius': '5px',
+                    'textAlign': 'center',
+                    'margin': '10px 0'
+                },
+                multiple=False
+            ),
+            # Upload Status Display
+            html.Div(id='upload-status', style={'margin': '10px 0', 'color': '#2C3E50'}),
+            # Preview of Uploaded Data
+            html.Div(id='data-preview-container', style={'margin': '20px 0'})
+        ], className="upload-section"),
+        # Visualization Controls
         html.Div([
-            # Graph Output
-            dcc.Graph(id="graph-output", className="graph-output"),
-            
-            # Data Preview
-            html.Div([
-                html.H3("📋 Data Preview", style={"color": "#2C3E50"}),
-                html.Div(id="data-preview", className="data-preview")
-            ]),
+            html.H3("🎨 Visualization Settings", style={"color": "#2C3E50"}),
 
-            # Statistics Output
-            html.Div(id="stats-output", className="stats-output"),
+            # Graph Type Selection
+            html.Label("📊 Chart Type:"),
+            dcc.Dropdown(
+                id="graph-type",
+                options=[
+                    {"label": "Bar Chart", "value": "bar"},
+                    {"label": "Line Chart", "value": "line"},
+                    {"label": "Scatter Plot", "value": "scatter"},
+                    {"label": "Histogram", "value": "histogram"},
+                    {"label": "Box Plot", "value": "box"},
+                    {"label": "Heatmap", "value": "heatmap"},
+                    {"label": "Pie Chart", "value": "pie"},
+                    {"label": "3D Scatter", "value": "scatter_3d"},
+                    {"label": "Bubble Chart", "value": "bubble"},
+                    {"label": "Area Chart", "value": "area"}
+                ],
+                value="bar",
+                className="dropdown"
+            ),
 
-            # Export Options
-            html.Div([
-        # Download Format Selection
-        dcc.Dropdown(
-            id='download-format',
-            options=[
-                {'label': 'PNG Image', 'value': 'png'},
-                {'label': 'JPEG Image', 'value': 'jpeg'},
-                {'label': 'SVG Vector', 'value': 'svg'},
-                {'label': 'HTML Interactive', 'value': 'html'},
-                {'label': 'PDF Document', 'value': 'pdf'}
-            ],
-            value='png',
-            placeholder="Select download format",
-            style={'width': '200px', 'margin': '10px 0'}
-        ),
-        # Download Quality Selection (for raster formats)
-        dcc.Dropdown(
-            id='download-quality',
-            options=[
-                {'label': 'Normal Quality', 'value': 1},
-                {'label': 'High Quality', 'value': 2},
-                {'label': 'Ultra Quality', 'value': 4}
-            ],
-            value=1,
-            placeholder="Select quality",
-            style={'width': '200px', 'margin': '10px 0'}
-        ),
-        html.Button(
-            "📥 Download Graph", 
-            id="download-button",
-            className="button",
-            style={
-                'backgroundColor': '#4CAF50',
-                'color': 'white',
-                'padding': '10px 20px',
-                'border': 'none',
-                'borderRadius': '5px',
-                'cursor': 'pointer',
-                'margin': '10px 0'
-            }
-        ),
-        html.Div(id="download-status", style={'margin': '10px 0'}),
-        dcc.Download(id="download-graph")
-    ], className="export-options"),
-        ], className="right-panel")
-    ], className="main-content"),
+            # Axis Selection
+            html.Label("📏 X-axis:"),
+            dcc.Dropdown(id="x-axis-column", className="dropdown"),
 
+            html.Label("📏 Y-axis:"),
+            dcc.Dropdown(id="y-axis-column", className="dropdown"),
+
+            # Color Scheme Selection
+            html.Label("🎨 Color Scheme:"),
+            dcc.Dropdown(
+                id="color-scheme",
+                options=[{"label": k, "value": k} for k in COLOR_SCHEMES.keys()],
+                value="Viridis",
+                className="dropdown"
+            ),
+
+            # Animation Toggle
+            html.Label("✨ Animation:"),
+            dcc.Checklist(
+                id='animation-toggle',
+                options=[{'label': 'Enable Animation', 'value': 'animate'}],
+                value=[],
+                className="checklist"
+            ),
+        ], className="visualization-controls"),
+
+        # Advanced Features
+        html.Div([
+            html.H3("🔧 Advanced Features", style={"color": "#2C3E50"}),
+
+            # Data Filtering
+            html.Label("🔍 Filter Data:"),
+            dcc.Dropdown(id="filter-column", placeholder="Select Column", className="dropdown"),
+            dcc.Input(id="filter-value", type="text", placeholder="Filter Value", className="input"),
+            html.Button("Apply Filter", id="apply-filter", className="button"),
+            html.Button("Reset Filters", id="reset-filter", className="button"),
+
+            # Statistical Analysis
+            html.Label("📈 Statistical Analysis:"),
+            dcc.Checklist(
+                id='stats-toggle',
+                options=[
+                    {'label': 'Show Trend Line', 'value': 'trend'},
+                    {'label': 'Show Summary Stats', 'value': 'stats'}
+                ],
+                value=[],
+                className="checklist"
+            ),
+        ], className="advanced-features"),
+
+    ], className="left-panel"),
+
+    # Right Panel - Visualization
+    html.Div([
+        # Graph Output
+        dcc.Graph(id="graph-output", className="graph-output"),
+
+        # Data Preview
+        html.Div([
+            html.H3("📋 Data Preview", style={"color": "#2C3E50"}),
+            html.Div(id="data-preview", className="data-preview")
+        ]),
+
+        # Statistics Output
+        html.Div(id="stats-output", className="stats-output"),
+
+        # Export Options
+        html.Div([
+            html.H3("📤 Export Options", style={"color": "#2C3E50"}),
+
+            # Download Format Selection
+            dcc.Dropdown(
+                id='download-format',
+                options=[
+                    {'label': 'PNG Image', 'value': 'png'},
+                    {'label': 'JPEG Image', 'value': 'jpeg'},
+                    {'label': 'SVG Vector', 'value': 'svg'},
+                    {'label': 'HTML Interactive', 'value': 'html'},
+                    {'label': 'PDF Document', 'value': 'pdf'}
+                ],
+                value='png',
+                placeholder="Select download format",
+                style={'width': '200px', 'margin': '10px 0'}
+            ),
+            # Download Quality Selection (for raster formats)
+            dcc.Dropdown(
+                id='download-quality',
+                options=[
+                    {'label': 'Normal Quality', 'value': 1},
+                    {'label': 'High Quality', 'value': 2},
+                    {'label': 'Ultra Quality', 'value': 4}
+                ],
+                value=1,
+                placeholder="Select quality",
+                style={'width': '200px', 'margin': '10px 0'}
+            ),
+            html.Button(
+                "📥 Download Graph",
+                id="download-button",
+                className="button",
+                style={
+                    'backgroundColor': '#4CAF50',
+                    'color': 'white',
+                    'padding': '10px 20px',
+                    'border': 'none',
+                    'borderRadius': '5px',
+                    'cursor': 'pointer',
+                    'margin': '10px 0'
+                }
+            ),
+            html.Div(id="download-status", style={'margin': '10px 0'}),
+            dcc.Download(id="download-graph"),
+
+            # Export Data Button
+            html.Button(
+                "📤 Export Data",
+                id="export-data",
+                className="button",
+                style={
+                    'backgroundColor': '#3498db',
+                    'color': 'white',
+                    'padding': '10px 20px',
+                    'border': 'none',
+                    'borderRadius': '5px',
+                    'cursor': 'pointer',
+                    'margin': '10px 0'
+                }
+            ),
+            dcc.Download(id="download-data")
+        ], className="export-options"),
+    ], className="right-panel")
+], className="main-content"),
 ], className="dashboard-container")
-
 
 @app.callback(
     [Output("download-graph", "data"),
@@ -605,7 +622,7 @@ def update_stats(stats_options, x_column, y_column):
     prevent_initial_call=True
 )
 def export_data(n_clicks):
-    if n_clicks is None:
+    if n_clicks is None or dataset is None:
         raise PreventUpdate
     return dcc.send_data_frame(dataset.to_csv, "exported_data.csv")
 
