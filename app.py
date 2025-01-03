@@ -66,7 +66,7 @@ app.layout = html.Div([
         html.H1("📊 Interactive Data Visualization Dashboard", 
                 style={"textAlign": "center", "color": "#2C3E50", "marginBottom": "20px"}),
         html.P("Upload your dataset and create beautiful visualizations instantly!", 
-               style={"textAlign": "center", "color": "#7F8C8D"})
+               style={"textAlign": "center", "color": "rgb(31 38 38)"})
     ], className="header-section"),
 
 # Main Content Container

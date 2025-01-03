@@ -21,27 +21,25 @@ body {
     animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Header Section - Modern Glassmorphism */
-/* Header Section - Enhanced Contrast and Vibrancy */
+/* Header Section - Clean Modern Design */
 .header-section {
-    padding: 40px;
+    padding: 50px 40px;
     margin-bottom: 40px;
     border-radius: 20px;
     text-align: center;
     position: relative;
     background: linear-gradient(135deg, 
-        rgba(41, 196, 182, 1) 0%,     /* Brighter teal */
-        rgba(88, 70, 218, 0.95) 100%  /* More vivid purple */
+        rgba(41, 196, 182, 1) 0%,    /* Bright teal */
+        rgba(88, 70, 218, 1) 100%    /* Solid purple */
     );
-    backdrop-filter: blur(20px);
     box-shadow: 
-        0 8px 32px rgba(31, 38, 135, 0.25),
-        0 4px 12px rgba(41, 196, 182, 0.2),
-        inset 0 2px 4px rgba(255, 255, 255, 0.2);
+        0 15px 35px rgba(31, 38, 135, 0.3),
+        0 8px 15px rgba(41, 196, 182, 0.2);
     animation: headerAppear 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    overflow: hidden;
 }
 
+/* Enhanced Gradient Border */
 .header-section::before {
     content: '';
     position: absolute;
@@ -51,55 +49,115 @@ body {
     bottom: -2px;
     background: linear-gradient(
         45deg,
-        rgba(255, 255, 255, 0.2),
-        rgba(255, 255, 255, 0.4),
-        rgba(255, 255, 255, 0.2)
+        rgba(255, 255, 255, 0.15),
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0.15)
     );
     border-radius: 22px;
     z-index: -1;
-    animation: gradientBorder 6s linear infinite;
+    animation: gradientBorder 8s linear infinite;
+}
+
+/* Subtle pattern overlay for depth */
+.header-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        circle at top right,
+        rgba(255, 255, 255, 0.1),
+        transparent 70%
+    );
+    pointer-events: none;
 }
 
 .header-section h1 {
-    color: white !important;
-    font-size: 2.8em;
-    font-weight: 700;  /* Increased from 600 */
-    margin-bottom: 15px;
+    color: rgb(0, 0, 0);
+    font-size: 3em;
+    font-weight: 700;
+    margin-bottom: 20px;
     letter-spacing: 0.5px;
-    text-shadow: 
-        2px 2px 4px rgba(0, 0, 0, 0.2),
-        0 0 20px rgba(255, 255, 255, 0.4);
-    animation: titlePulse 3s ease-in-out infinite;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1;
 }
 
 .header-section p {
-    color: white !important; /* Changed from rgba */
+    color: rgb(0, 0, 0);
     font-size: 1.3em;
-    font-weight: 400;  /* Increased from 300 */
+    font-weight: 500;
     max-width: 800px;
     margin: 0 auto;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    line-height: 1.6;
+    letter-spacing: 0.2px;
+    position: relative;
+    z-index: 1;
     animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.3s backwards;
-    opacity: 0.95;
 }
 
-/* Enhanced Glow Animation */
-@keyframes titlePulse {
+
+/* Header Appearance Animation */
+@keyframes headerAppear {
     0% {
-        text-shadow: 
-            2px 2px 4px rgba(0, 0, 0, 0.2),
-            0 0 20px rgba(255, 255, 255, 0.4);
-    }
-    50% {
-        text-shadow: 
-            2px 2px 4px rgba(0, 0, 0, 0.3),
-            0 0 30px rgba(255, 255, 255, 0.6),
-            0 0 40px rgba(41, 196, 182, 0.4);
+        opacity: 0;
+        transform: translateY(-30px);
     }
     100% {
-        text-shadow: 
-            2px 2px 4px rgba(0, 0, 0, 0.2),
-            0 0 20px rgba(255, 255, 255, 0.4);
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+    .header-section {
+        padding: 40px 30px;
+    }
+    
+    .header-section h1 {
+        font-size: 2.5em;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-section {
+        padding: 35px 25px;
+    }
+    
+    .header-section h1 {
+        font-size: 2.2em;
+    }
+    
+    .header-section p {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-section {
+        padding: 30px 20px;
+    }
+    
+    .header-section h1 {
+        font-size: 1.8em;
+    }
+    
+    .header-section p {
+        font-size: 1.1em;
     }
 }
 
@@ -118,23 +176,6 @@ body {
     }
 }
 
-/* Enhanced Header Appearance Animation */
-@keyframes headerAppear {
-    0% {
-        opacity: 0;
-        transform: translateY(-30px) scale(0.95);
-        box-shadow: 
-            0 0 0 rgba(31, 38, 135, 0),
-            0 0 0 rgba(41, 196, 182, 0);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-        box-shadow: 
-            0 8px 32px rgba(31, 38, 135, 0.25),
-            0 4px 12px rgba(41, 196, 182, 0.2);
-    }
-}
 
 /* Main Content Layout */
 .main-content {
